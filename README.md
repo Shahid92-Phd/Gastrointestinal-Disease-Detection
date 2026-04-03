@@ -1,48 +1,40 @@
-# Gastrointestinal-Disease-Detection
-# Hybrid ViT-L/32 + MaxViT-L with Gated Fusion for Gastrointestinal Disease Classification
+# Additional Python Files for the Kvasir Hybrid Transformer Repository
 
-This repository provides the implementation of a hybrid transformer framework for multi-class gastrointestinal disease classification using endoscopic images from the Kvasir dataset.
+This package contains:
 
-## Features
-- Dual-branch architecture: ViT-L/32 + MaxViT-L
-- Adaptive gated fusion
-- Training, evaluation, inference, and XAI support
-- IEEE-style modular implementation for readability and reproducibility
+1. `xai_analysis_full.py`
+   - Full XAI implementation for:
+     - SmoothGrad
+     - Integrated Gradients
+     - Occlusion Sensitivity
+     - LIME
+     - Grad-CAM
+     - Grad-CAM++
+     - Score-CAM
+   - Generates a paper-style grid:
+     `Original | SmoothGrad | Integrated Gradients | Occlusion | LIME | GradCAM | GradCAM++ | ScoreCAM`
 
-## Dataset
-Kvasir dataset with the following 8 classes:
-- Dyed-lifted-polyps
-- Dyed-resection-margins
-- Esophagitis
-- Normal-cecum
-- Normal-pylorus
-- Normal-z-line
-- Polyps
-- Ulcerative-colitis
+2. `baseline_models/`
+   - Baseline `.py` implementations for:
+     - DeiT-Base
+     - ViT-B/16
+     - ViT-L/32
+     - TransUNet (classification adaptation)
+     - TransFuse (classification adaptation)
+     - MedViT (lightweight classification-oriented approximation)
+     - Pyramid Vision Transformer (PVT-v2)
+     - Swin Transformer-Base
+     - Swin-UNETR (classification adaptation)
+     - MaxViT-Large
+
+## Notes
+- Models backed by `timm` use well-known model identifiers and pretrained weights when available.
+- `SwinUNETR` uses `MONAI` if installed.
+- `TransUNet`, `TransFuse`, and `MedViT` are classification-oriented baseline adaptations intended for fair comparison in your GI classification paper.
 
 ## Installation
 ```bash
-pip install -r requirements.txt
-Training
-python train.py
-Evaluation
-python evaluate.py
-XAI Analysis
-python xai_analysis.py
-
----
-
-# 2. requirements.txt
-
-```txt
-torch
-torchvision
-timm
-numpy
-pandas
-matplotlib
-scikit-learn
-opencv-python
-Pillow
-tqdm
-captum
+pip install torch torchvision timm numpy matplotlib scikit-learn pillow opencv-python captum lime scikit-image grad-cam
+# Optional for Swin-UNETR:
+pip install monai
+```
