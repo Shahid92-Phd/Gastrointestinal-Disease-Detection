@@ -30,7 +30,7 @@ This package contains:
 ## Notes
 - Models backed by `timm` use well-known model identifiers and pretrained weights when available.
 - `SwinUNETR` uses `MONAI` if installed.
-- `TransUNet`, `TransFuse`, and `MedViT` are classification-oriented baseline adaptations intended for fair comparison in our GI Detection and classification paper.
+- `TransUNet`, `TransFuse`, and `MedViT` are classification-oriented baseline adaptations intended for fair comparison in our GI detection and classification paper.
 
 ## Installation
 ```bash
